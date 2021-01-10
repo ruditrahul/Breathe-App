@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathe App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>Relaxer</h1>
+
+     <div class="container">
+         <div class="circle"></div>
+         <p id="text"></p>
+
+         <div class="pointer-container">
+             <div class="pointer"></div>
+         </div>
+
+         <div class="gradient-circle"></div>
+
+     </div>
+
+     <script>
+         const container=document.querySelector(".container");
+         const text=document.querySelector('#text');
+         text.innerHTML="Get Ready!!"
+
+         setTimeout(() => {
+            text.innerHTML="3";
+            setTimeout(()=>{
+                text.innerHTML="2";
+                setTimeout(()=>{
+                text.innerHTML="1";
+            },1000);
+            },1000);
+         },4000);
+
+         const totalTime=7500;
+         const breatheTime=(totalTime / 5) * 2;
+         const holdTime=(totalTime / 5);
+
+         function breatheAnimation()
+         {
+             text.innerHTML='Breathe In!';
+             container.className='container grow';
+
+             setTimeout(()=>{
+                 text.innerHTML="Hold";
+
+                 setTimeout(()=>{
+                     text.innerHTML="Breathe Out!"
+                     container.className='container shrink'
+                 },holdTime)
+
+             },breatheTime)
+         }
+
+         setInterval(breatheAnimation,totalTime);
+
+     </script>
+
+
+</body>
+</html>
